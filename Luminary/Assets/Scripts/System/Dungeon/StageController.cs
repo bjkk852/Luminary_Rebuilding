@@ -119,6 +119,21 @@ public class StageController
             rooms[currentRoom].GetComponent<DunRoom>().ActivateRoom();
         }
         rooms[currentRoom].isActivate = true;
+        foreach(DunRoom go in rooms)
+        {
+            if (rooms[currentRoom].ConnectRoom.Find(Item => Item.roomID == go.roomID))
+            {
+                go.gameObject.SetActive(true);
+            }
+            else if(go.roomID == currentRoom)
+            {
+                go.gameObject.SetActive(true);
+            }
+            else
+            {
+                go.gameObject.SetActive(false);
+            }
+        }
     }
 
     public void ClearRoom()

@@ -221,6 +221,8 @@ public class MapGen
         SetDoorTile(targetRoom.Key, room, pos, po);
         SetPosData(room, po);
 
+        targetRoom.Key.ConnectRoom.Add(room);
+        room.ConnectRoom.Add(targetRoom.Key);
 
 
         return room;

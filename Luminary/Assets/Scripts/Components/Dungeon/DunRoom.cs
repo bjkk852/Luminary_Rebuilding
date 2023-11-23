@@ -14,6 +14,8 @@ public class DunRoom : MonoBehaviour
     public List<GameObject> Doors;
     public List<GameObject> DoorObjs;
 
+    public List<DunRoom> ConnectRoom;
+
     public int sizeX, sizeY;
 
     public GameObject enterTrigger;
