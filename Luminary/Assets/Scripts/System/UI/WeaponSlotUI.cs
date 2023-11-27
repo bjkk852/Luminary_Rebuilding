@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponSlotUI : MonoBehaviour
+public class WeaponSlotUI : MonoBehaviorObj
 {
     RectTransform rect;
     [SerializeField]
@@ -32,9 +32,4 @@ public class WeaponSlotUI : MonoBehaviour
         rect = GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

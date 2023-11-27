@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UICloseButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class UICloseButton : MonoBehaviorObj, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Menu menu;
     public List<Sprite> sprites = new List<Sprite>();

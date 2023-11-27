@@ -105,6 +105,7 @@ public class NPCUI : Menu
             {
                 // After Filling all texts, Selection UI sprite Set
                 isActivate = true;
+                SelectUI.SetActive(true);
                 selects[currentSelection].GetComponent<SpriteRenderer>().sprite = selects[currentSelection].GetComponent<Choice>().select;
             }
         }

@@ -44,3 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d282094f325f90d41ad1cb4591b4c285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
+  spawnTime: 0
+  currentTime: 0
+  deltaTime: 0
+  spawnPos: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
+  target: {fileID: 0}
+  mos: {x: 0, y: 0, z: 0}
+  pos: {x: 0, y: 0, z: 0}
+  dmg: 0
+  isGen: 0

@@ -52,4 +52,10 @@ public class Boss : Mob
         AnimationPlay("SpawnAnimation");
         GameManager.Instance.uiManager.ChangeState(UIState.CutScene);
     }
+
+    public override void DieObject()
+    {
+        base.DieObject();
+
+    }
 }

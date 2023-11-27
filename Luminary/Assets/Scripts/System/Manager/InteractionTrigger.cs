@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public abstract class InteractionTrriger : MonoBehaviour
+public abstract class InteractionTrriger : MonoBehaviorObj
 {
     private float distanceToPlayer;
     [SerializeField]

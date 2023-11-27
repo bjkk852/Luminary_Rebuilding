@@ -192,7 +192,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -346,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4acae56aa5e6e584baae2511cf8ad0b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 2
   BlankHP_L: {fileID: 21300000, guid: f9c325e5b8dab7f4da561f0810a5dfa8, type: 3}
   BlankHP_C: {fileID: 21300000, guid: b1450ee983d97ec4ea491efc6e3ffacf, type: 3}
   BlankHP_R: {fileID: 21300000, guid: 6f7d6b59f5eb93c459088609ab95cbf8, type: 3}
@@ -452,7 +454,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -639,6 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b27eadf0898e3e44a89b163d785fb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   WeaponSpr: {fileID: 2203705231193209555}
   SpellSpr: {fileID: 7804076817322255444}
 --- !u!1 &8617180187508775448
@@ -744,6 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b27eadf0898e3e44a89b163d785fb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   WeaponSpr: {fileID: 2308746820988772675}
   SpellSpr: {fileID: 4841056484053841597}
 --- !u!1 &8734526569855954475

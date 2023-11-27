@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.AI;
 
-public class Charactor : MonoBehaviour
+public class Charactor : MonoBehaviorObj
 {
     // Charactor State Machine
     protected StateMachine sMachine;
@@ -116,11 +116,11 @@ public class Charactor : MonoBehaviour
         // turn around by saw Dir
         if(sawDir.x > 0)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            transform.rotation = Quaternion.Euler(new Vector3(60, 180, 0));
         }
         else if (sawDir.x < 0)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            transform.rotation = Quaternion.Euler(new Vector3(-60, 0, 0));
         }
         // state machine state running
         sMachine.updateState();
@@ -140,7 +140,7 @@ public class Charactor : MonoBehaviour
         // if durate time end buffs exists, delete buffs in list
         desetBuffs();
     }
-/*
+
     public void setBuff(Buff buff)
     {
         if (!isbuffCool(buff.id))
@@ -212,7 +212,7 @@ public class Charactor : MonoBehaviour
         }
         return true;
     }
-*/
+
     // delete durate time end buffs
     public void desetBuffs()
     {
@@ -264,7 +264,6 @@ public class Charactor : MonoBehaviour
             }
             if (status.currentHP <= 0)
             {
-                changeState(new DieState()); ;
                 DieObject();
             }
         }
@@ -294,7 +293,7 @@ public class Charactor : MonoBehaviour
     // When object die function
     public virtual void DieObject()
     {
-        GameManager.Resource.Destroy(this.gameObject);
+        changeState(new DieState());
     }
     // Item Add in Inventory[index]
     public bool ItemAdd(Item item, int index = -1)

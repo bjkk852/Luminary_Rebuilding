@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlotBar : MonoBehaviour, IPointerEnterHandler,  IPointerClickHandler, IPointerExitHandler
+public class ItemSlotBar : MonoBehaviorObj, IPointerEnterHandler,  IPointerClickHandler, IPointerExitHandler
 {
     private Item _item;
 

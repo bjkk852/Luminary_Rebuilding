@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ConfirmButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class ConfirmButton : MonoBehaviorObj, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Menu menu;
     public bool isAble = false;

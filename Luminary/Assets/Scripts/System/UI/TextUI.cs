@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextUI : MonoBehaviour
+public class TextUI : MonoBehaviorObj
 {
     public string text;
 

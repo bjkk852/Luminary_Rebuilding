@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellObj : MonoBehaviour
+public class SpellObj : MonoBehaviorObj
 {
     // Start is called before the first frame update
 

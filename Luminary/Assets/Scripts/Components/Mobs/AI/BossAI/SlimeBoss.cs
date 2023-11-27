@@ -30,7 +30,60 @@ public class SlimeBoss : AIModel
                     patturns[0] = true;
                     target.changeState(new MobCastState(2f, 3));
                 }
-                // 
+                else if(target.playerDistance().magnitude <= target.data.attackRange[2])
+                {
+                    if (Time.time - target.lastAttackT[2] >= target.data.castCool[2])
+                    {
+                        // Eating Patturn
+                    }
+                    else
+                    {
+                        if (target.playerDistance().magnitude <= target.data.attackRange[1])
+                        {
+                            if (Time.time - target.lastAttackT[1] >= target.data.castCool[1])
+                            {
+                                // Slime Rain Patturn
+                                target.changeState(new MobCastState(2f, 1));
+                            }
+                            else
+                            {
+                                if (Time.time - moveTime >= 1.3f)
+                                {
+                                    moveTime = Time.time;
+                                    isMove = true;
+                                    target.changeState(new MobChaseState());
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (Time.time - moveTime >= 1.3f)
+                            {
+                                moveTime = Time.time;
+                                isMove = true;
+                                target.changeState(new MobChaseState());
+                            }
+                        }
+                    }
+                }
+                else if(target.playerDistance().magnitude <= target.data.attackRange[1])
+                {
+                    if (Time.time - target.lastAttackT[1] >= target.data.castCool[1])
+                    {
+                        // Slime Rain Patturn
+                        target.changeState(new MobCastState(2f, 1));
+                    }
+                    else
+                    {
+                        if (Time.time - moveTime >= 1.3f)
+                        {
+                            moveTime = Time.time;
+                            isMove = true;
+                            target.changeState(new MobChaseState());
+                        }
+                    }
+                }
+                // If move cooltime is done, move
                 else if(Time.time - moveTime >= 1.3f)
                 {
                     moveTime = Time.time;

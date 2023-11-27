@@ -235,7 +235,8 @@ MonoBehaviour:
   m_text: "\uC0C1\uC778"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6db47208764bc8e45845b443b6964153, type: 2}
-  m_sharedMaterial: {fileID: 7074184151781694765, guid: 6db47208764bc8e45845b443b6964153, type: 2}
+  m_sharedMaterial: {fileID: 7074184151781694765, guid: 6db47208764bc8e45845b443b6964153,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -371,7 +372,8 @@ MonoBehaviour:
     \uBB3B\uB294\uB2E4\uBA74 \uB098\uB294 \uC648\uB3C4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6db47208764bc8e45845b443b6964153, type: 2}
-  m_sharedMaterial: {fileID: 7074184151781694765, guid: 6db47208764bc8e45845b443b6964153, type: 2}
+  m_sharedMaterial: {fileID: 7074184151781694765, guid: 6db47208764bc8e45845b443b6964153,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -489,9 +491,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b64129cf4cfd594782aa8abfcbb5afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 2
   index: 0
   menusize: 0
   currentMenu: 0
+  closeButton: {fileID: 0}
   npc: {fileID: 0}
   nameUI: {fileID: 294685741793316642}
   TextUI: {fileID: 8941944386245637135}

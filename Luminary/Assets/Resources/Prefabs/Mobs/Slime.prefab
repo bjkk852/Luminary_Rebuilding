@@ -71,8 +71,8 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828922195368599024}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -147,9 +147,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.2}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.13
 --- !u!95 &4828434631867619184
 Animator:
   serializedVersion: 5
@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c925b8cdfb8b0b4eb6efa0029ab68f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   player: {fileID: 0}
   isboss: 0
   canMove: 1
@@ -200,5 +201,7 @@ MonoBehaviour:
   isHitbox: 
   data: {fileID: 11400000, guid: 9798beb1a6c7bc84086141adf5d6c6b4, type: 2}
   lastAttackT: []
-  AtkObj: {fileID: 0}
+  AtkObj:
+  - {fileID: 0}
+  ActiveAtk: {fileID: 0}
   sawDirect: {x: 0, y: 0}

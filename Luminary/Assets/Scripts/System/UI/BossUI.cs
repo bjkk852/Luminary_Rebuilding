@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossUI : MonoBehaviour
+public class BossUI : MonoBehaviorObj
 {
     public Boss boss;
     public Image HPBar;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DMGUI : MonoBehaviour
+public class DMGUI : MonoBehaviorObj
 {
     public TMP_Text text;
     public Vector3 dir;

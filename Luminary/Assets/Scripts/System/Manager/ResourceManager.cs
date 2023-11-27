@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Xml;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SearchService;
 
 
 // 리소스의 Load, Instantiate, Destroy 를 관리하는 리소스 매니저. 
@@ -30,8 +32,29 @@ public class ResourceManager
             Debug.Log($"Failed to load prefab : {path}");
             return null;
         }
+        else
+        {
+            try
+            {
+                if(prefab.GetComponent<MonoBehaviorObj>().type == MonoBehaviorObj.types.Object)
+                {
+                    GameObject obj = Object.Instantiate(prefab, parent);
+                    Vector3 scale = prefab.transform.localScale;
+                    obj.transform.localScale = new Vector3(1 * scale.x, 2 * scale.y, 1 * scale.z);
+                    obj.transform.localEulerAngles = new Vector3(-60, 0, 0);
+                    return obj;
+                }
+                else
+                {
+                    return Object.Instantiate(prefab, parent);
+                }
+            }
+            catch
+            {
 
-        return Object.Instantiate(prefab, parent);
+                return Object.Instantiate(prefab, parent);
+            }
+        }
     }
 
     public GameObject Instantiate(string path, Transform parent = null)
@@ -42,8 +65,29 @@ public class ResourceManager
             Debug.Log($"Failed to load prefab : {path}");
             return null;
         }
+        else
+        {
+            try
+            {
+                if (prefab.GetComponent<MonoBehaviorObj>().type == MonoBehaviorObj.types.Object)
+                {
+                    GameObject obj = Object.Instantiate(prefab, parent);
+                    Vector3 scale = obj.transform.localScale;
+                    obj.transform.localScale = new Vector3(1 * scale.x, 2 * scale.y, 1 * scale.z);
+                    obj.transform.localEulerAngles = new Vector3(-60, 0, 0);
+                    return obj;
+                }
+                else
+                {
+                    return Object.Instantiate (prefab, parent);
+                }
 
-        return Object.Instantiate(prefab, parent);
+            }
+            catch
+            {
+                return Object.Instantiate(prefab, parent);
+            }
+        }
     }
 
     public GameObject Instantiate(string path)
@@ -54,8 +98,28 @@ public class ResourceManager
             Debug.Log($"Failed to load prefab : {path}");
             return null;
         }
-
-        return Object.Instantiate(prefab);
+        else
+        {
+            try
+            {
+                if (prefab.GetComponent<MonoBehaviorObj>().type == MonoBehaviorObj.types.Object)
+                {
+                    GameObject obj = Object.Instantiate(prefab);
+                    Vector3 scale = obj.transform.localScale;
+                    obj.transform.localScale = new Vector3(1 * scale.x, 2 * scale.y, 1 * scale.z);
+                    obj.transform.localEulerAngles = new Vector3(-60, 0, 0);
+                    return obj;
+                }
+                else
+                {
+                    return Object.Instantiate(prefab);
+                }
+            }
+            catch
+            {
+                return Object.Instantiate(prefab);
+            }
+        }
     }
 
     // Game Object Loading with GameObject Prefabs
@@ -66,13 +130,30 @@ public class ResourceManager
             return null;
         }
         GameObject prefab = Object.Instantiate(obj, parent);
+        prefab.transform.position = pos;
         if (prefab == null)
         {
             Debug.Log($"Failed to laod prefab : {obj.name}");
             return null;
         }
-        prefab.transform.position = pos;
-        return prefab;
+        else
+        {
+            try
+            {
+                if (prefab.GetComponent<MonoBehaviorObj>().type == MonoBehaviorObj.types.Object)
+                {
+                    Vector3 scale = prefab.transform.localScale;
+                    prefab.transform.localScale = new Vector3(1 * scale.x, 2 * scale.y, 1 * scale.z);
+                    prefab.transform.localEulerAngles = new Vector3(-60, 0, 0);
+                }
+                return prefab;
+            }
+            catch
+            {
+
+                return prefab;
+            }
+        }
     }
 
     public GameObject Instantiate(GameObject obj, Transform parent = null)
@@ -87,7 +168,24 @@ public class ResourceManager
             Debug.Log($"Failed to laod prefab : {obj.name}");
             return null;
         }
-        return prefab;
+        else
+        {
+            try
+            {
+                if (prefab.GetComponent<MonoBehaviorObj>().type == MonoBehaviorObj.types.Object)
+                {
+                    Vector3 scale = prefab.transform.localScale;
+                    prefab.transform.localScale = new Vector3(1 * scale.x, 2 * scale.y, 1 * scale.z);
+                    prefab.transform.localEulerAngles = new Vector3(-60, 0, 0);
+                }
+                return prefab;
+            }
+            catch
+            {
+
+                return prefab;
+            }
+        }
     }
     public GameObject Instantiate(GameObject obj)
     {
@@ -101,7 +199,25 @@ public class ResourceManager
             Debug.Log($"Failed to laod prefab : {obj.name}");
             return null;
         }
-        return prefab;
+
+        else
+        {
+            try
+            {
+                if (prefab.GetComponent<MonoBehaviorObj>().type == MonoBehaviorObj.types.Object)
+                {
+                    Vector3 scale = prefab.transform.localScale;
+                    prefab.transform.localScale = new Vector3(1 * scale.x, 2 * scale.y, 1 * scale.z);
+                    prefab.transform.localEulerAngles = new Vector3(-60, 0, 0);
+                }
+                return prefab;
+            }
+            catch
+            {
+
+                return prefab;
+            }
+        }
     }
 
     // Loading XML Datas in path

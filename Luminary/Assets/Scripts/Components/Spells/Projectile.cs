@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class Projectile : SpellObj
@@ -24,8 +25,10 @@ public class Projectile : SpellObj
         // Set Projectile spell transforms
         transform.position = player.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
+        //        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.eulerAngles = new Vector3(0, 0, 0);
+        transform.Rotate(Vector3.forward, angle);
+        transform.Rotate(Vector3.left, 60);
         startPos = transform.position;
     }
 
@@ -33,8 +36,11 @@ public class Projectile : SpellObj
     {
         // Set Projectile transfrom on frame
         base.Update();
+        /*
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        */
+
         // if in ellipse process projectile
         if (IsPointInEllipse())
         {

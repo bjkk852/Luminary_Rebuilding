@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class MobAttack : MonoBehaviour
+public class MobAttack : MonoBehaviorObj
 {
     public Mob shooter;
     public MobAttack instance;

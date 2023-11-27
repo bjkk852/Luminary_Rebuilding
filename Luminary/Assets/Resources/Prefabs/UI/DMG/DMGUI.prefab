@@ -70,7 +70,8 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6db47208764bc8e45845b443b6964153, type: 2}
-  m_sharedMaterial: {fileID: 7074184151781694765, guid: 6db47208764bc8e45845b443b6964153, type: 2}
+  m_sharedMaterial: {fileID: 7074184151781694765, guid: 6db47208764bc8e45845b443b6964153,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -148,5 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a4eee5dce38564293d898f2822a337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 2
   text: {fileID: 4411526707760617125}
-  targetTrans: {fileID: 0}
+  dir: {x: 0, y: 0, z: 0}
+  x: 0
+  pos: {x: 0, y: 0, z: 0}

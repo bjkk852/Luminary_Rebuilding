@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class Choice : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
+public abstract class Choice : MonoBehaviorObj, IPointerEnterHandler, IPointerClickHandler
 {
     public int index;
     [SerializeField]

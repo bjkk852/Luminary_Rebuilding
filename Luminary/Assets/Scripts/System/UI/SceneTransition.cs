@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneTransition : MonoBehaviour
+public class SceneTransition : MonoBehaviorObj
 {
     public float fadeOutTime = 1.0f;
     public float fadeInTime = 1.0f;

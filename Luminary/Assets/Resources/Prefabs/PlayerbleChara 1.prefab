@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1a1beea1a299c489dba570f08b2601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   player: {fileID: 0}
   isboss: 0
   canMove: 1

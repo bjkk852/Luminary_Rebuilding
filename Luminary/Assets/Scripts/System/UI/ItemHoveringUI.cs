@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemHoveringUI : MonoBehaviour
+public class ItemHoveringUI : MonoBehaviorObj
 {
     public Item item;
     [SerializeField]

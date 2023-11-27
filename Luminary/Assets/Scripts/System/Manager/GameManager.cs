@@ -259,7 +259,6 @@ public class GameManager : MonoBehaviour
         uiManager.ChangeState(UIState.Lobby);
         gameState = GameState.InPlay;
 
-        Resource.Instantiate("Mobs/Goblin/Archor/Goblin_Archor", new Vector3(7f,7f,0f));
         Item item = itemDataManager.ItemGen(10003001);
         player.GetComponent<Player>().Equip(0, item);
     }
@@ -393,6 +392,14 @@ public class GameManager : MonoBehaviour
     {
         GameObject go = Resource.Instantiate("Obj/DropItem");
         go.GetComponent<DropItem>().item = itemDataManager.ItemGen(index);
+        go.GetComponent<DropItem>().setSpr();
+        go.transform.position = position.position;
+    }
+
+    public void RandomItemDrop(Transform position)
+    {
+        GameObject go = Resource.Instantiate("Obj/DropItem");
+        go.GetComponent<DropItem>().item = itemDataManager.RandomItemGen();
         go.GetComponent<DropItem>().setSpr();
         go.transform.position = position.position;
     }

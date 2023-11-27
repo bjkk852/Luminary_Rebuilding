@@ -44,5 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8acc959c08301d049a32a57b3a02e8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 2
   index: 0
   menusize: 3
+  currentMenu: 0
+  closeButton: {fileID: 0}

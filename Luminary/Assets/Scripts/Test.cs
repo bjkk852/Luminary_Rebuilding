@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : InteractionTrriger
+public class Test : MonoBehaviour
 {
-    public override void isInteraction()
+    public void Start()
     {
-        Debug.Log("Test Code Running");
-        GameManager.Instance.ItemDrop(0, transform);
-        GameManager.Resource.Destroy(gameObject);
-
-        base.isInteraction();
+        transform.Rotate(Vector3.forward, -60);
+        transform.Rotate(Vector3.left, 60);
+        transform.localScale = new Vector3(1, 2, 1);
     }
 }
