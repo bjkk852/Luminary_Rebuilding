@@ -51,6 +51,7 @@ public class UIManager : MonoBehaviour
     // Menu object closed, reset before menu
     public void endMenu()
     {
+        Debug.Log("EndMenu");
         currentMenu.exit();
         currentMenu = null;
         if (menuStack.Count > 0)

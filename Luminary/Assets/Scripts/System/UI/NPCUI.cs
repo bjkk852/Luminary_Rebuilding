@@ -82,7 +82,7 @@ public class NPCUI : Menu
 
                 if (Input.GetKeyDown(PlayerDataManager.keySetting.InteractionKey))
                 {
-                    SelectionWork();
+                    ConfirmAction();
                 }
             }
         }
@@ -109,11 +109,6 @@ public class NPCUI : Menu
                 selects[currentSelection].GetComponent<SpriteRenderer>().sprite = selects[currentSelection].GetComponent<Choice>().select;
             }
         }
-    }
-
-    public virtual void SelectionWork()
-    {
-        selects[currentSelection].GetComponent<Choice>().Work();
     }
 
     public IEnumerator TextFilling()
@@ -173,5 +168,6 @@ public class NPCUI : Menu
 
     public override void ConfirmAction()
     {
+        selects[currentSelection].GetComponent<Choice>().Work();
     }
 }

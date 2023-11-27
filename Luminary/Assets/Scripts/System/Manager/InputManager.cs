@@ -25,10 +25,19 @@ public class InputManager : MonoBehaviour
         mousePos = Input.mousePosition;
         mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
         mouseWorldPos.z = 0;
-
-        if(GameManager.gameState != GameState.Loading)
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            Debug.Log("G");
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameManager.gameState == GameState.Pause)
+            {
+                GameManager.Instance.pauseGame();
+                GameManager.Instance.uiManager.endMenu();
+            }
+            else if ((GameManager.gameState != GameState.Loading)
+                && (GameManager.uiState == UIState.InPlay || GameManager.uiState == UIState.Lobby))
             {
                 GameManager.Instance.pauseGame();
             }

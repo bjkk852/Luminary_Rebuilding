@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Menu : MonoBehaviorObj
 {
-    public int index = 0;
     public int menusize;
     public int currentMenu;
     public GameObject closeButton;
@@ -13,7 +12,7 @@ public abstract class Menu : MonoBehaviorObj
     public virtual void Start()
     {
         GameManager.Instance.uiManager.addMenu(this);
-        Debug.Log("Menu Generate");
+        Func.SetRectTransform(gameObject);
     }
 
     // when Menu hide, input deset, gameObject SetActive false
@@ -27,7 +26,6 @@ public abstract class Menu : MonoBehaviorObj
     public virtual void show()
     {
         gameObject.SetActive(true);
-
         StartCoroutine(inputSet());
     }
 
@@ -53,7 +51,7 @@ public abstract class Menu : MonoBehaviorObj
     public abstract void ConfirmAction();
 
     // ESC Input = exit
-    public void ESCInput()
+    public virtual void ESCInput()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {

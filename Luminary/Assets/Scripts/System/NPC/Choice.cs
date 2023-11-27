@@ -11,7 +11,12 @@ public abstract class Choice : MonoBehaviorObj, IPointerEnterHandler, IPointerCl
     public Sprite deSelect;
     public NPC npc;
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
+    {
+        OnPointerHandler(eventData);
+    }
+
+    public virtual void OnPointerHandler(PointerEventData eventData) 
     {
         // Mouse point Enter, showing select buttons
         npc.openmenu.GetComponent<NPCUI>().DeSelectHandler(npc.openmenu.GetComponent<NPCUI>().currentSelection);

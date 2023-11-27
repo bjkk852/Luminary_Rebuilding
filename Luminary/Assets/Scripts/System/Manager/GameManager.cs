@@ -315,14 +315,14 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0f; // Pause Game
                 isPaused = true;
                 GameObject go = Resource.Instantiate("UI/Pause", canvas.transform);
+                gameState = GameState.Pause;
                 go.name = "pause";
             }
             else
             {
                 Debug.Log("Resume");
-                GameObject go = GameObject.Find("pause");
-                Resource.Destroy(go);
                 Time.timeScale = 1f; // Resume Game
+                gameState = GameState.InPlay;
                 isPaused = false;
 
             }

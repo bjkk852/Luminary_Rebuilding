@@ -1,49 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : Menu
 {
-    int menuSize = 3;
+    [SerializeField]
+    List<GameObject> selects = new List<GameObject>();
+    [SerializeField]
+    List<TMP_Text> texts;
+
+    public override void Start()
+    {
+        base.Start();
+        menusize = 2;
+        currentMenu = 0;
+    }
 
     public override void ConfirmAction()
     {
+        selects[currentMenu].GetComponent<Choice>().Work();
     }
+
 
     public override void InputAction()
     {
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            index++;
-            index %= menusize;
-            Debug.Log(index);
+            currentMenu++;
+            currentMenu %= menusize;
         }
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
-            index--;
-            if(index < 0)
+            currentMenu--;
+            if(currentMenu < 0)
             {
-                index = menusize - 1;
+                currentMenu = menusize - 1;
             }
-            Debug.Log(index);
         }
-        if(Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
+        if(Input.GetKeyDown(KeyCode.Return))
         {
-            switch (index)
-            {
-                case 0:
-                    GameManager.Instance.pauseGame();
-                    break;
-                case 1:
-                    // Menu Set
-                    break;
-                case 2:
-                    // Save And End
+            ConfirmAction();
+        }
+    }
+    // Highlight select ui
+    public void SelectHandler(int index)
+    {
+        selects[index].GetComponent<Image>().sprite = selects[index].GetComponent<Choice>().select;
+        texts[index].color = Color.white;
+    }
+    // Highlight off select ui
+    public void DeSelectHandler(int index)
+    {
+        selects[index].GetComponent<Image>().sprite = selects[index].GetComponent<Choice>().deSelect;
+        texts[index].color = Color.gray;
+    }
 
-                    GameManager.Instance.pauseGame();
-                    break;
-
-            }
+    public override void ESCInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("TEST");
+            GameManager.Instance.pauseGame();
+            GameManager.Instance.uiManager.endMenu();
         }
     }
 }
