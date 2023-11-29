@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5178427110661861826}
   - component: {fileID: -2379064674690440154}
   - component: {fileID: 4242228221639388190}
-  - component: {fileID: 206892365057160699}
   - component: {fileID: 4828434631867619184}
   - component: {fileID: 2375397327634877226}
+  - component: {fileID: 3946516618487770308}
   m_Layer: 0
-  m_Name: TestSlime
+  m_Name: SlimeBoss
   m_TagString: Mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: d8d1211f9f8d10a42a52793cf3f03d79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,52 +104,17 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fcf660a75bea1884fa1d14e17c1ac515, type: 3}
+  m_Sprite: {fileID: 438447150, guid: 496aae9d8aad3fd4398395b343a070a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 15.000001, y: 15.000001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &206892365057160699
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828922195368599024}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!95 &4828434631867619184
 Animator:
   serializedVersion: 5
@@ -160,7 +125,7 @@ Animator:
   m_GameObject: {fileID: 1828922195368599024}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 792cbe4ccecbf1046b0d472f488082a9, type: 2}
+  m_Controller: {fileID: 9100000, guid: a6c5b88c771bd3d45970d8b665869a90, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -197,8 +162,12 @@ MonoBehaviour:
   animator: {fileID: 4828434631867619184}
   currentAnimation: 
   sawDir: {x: 0, y: 0}
-  attackPrefab: []
-  isHitbox: 
+  attackPrefab:
+  - {fileID: 9180258896454333415, guid: 3caa3e23c1c0d864ca8b79ab764c1b59, type: 3}
+  - {fileID: 3746470321537261040, guid: 072bd378d43635f429e2cbbdef514c7d, type: 3}
+  - {fileID: 3746470321537261040, guid: 339368e0ba12ea8468851a00bd024eee, type: 3}
+  - {fileID: 3746470321537261040, guid: 393903f90ad368b4fb1e540c8a44272d, type: 3}
+  isHitbox: 00000100
   data: {fileID: 11400000, guid: b829dd545330c8d4e88eb7bfb4a41e91, type: 2}
   lastAttackT: []
   AtkObj:
@@ -206,3 +175,38 @@ MonoBehaviour:
   ActiveAtk: {fileID: 0}
   sawDirect: {x: 0, y: 0}
   isSpawnAction: 1
+--- !u!70 &3946516618487770308
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828922195368599024}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 2.2500014}
+  m_Size: {x: 3.7, y: 4}
+  m_Direction: 0

@@ -25,5 +25,9 @@ public class EquipSlotChara
         this.item = null;
         GameManager.player.GetComponent<Player>().calcStatus();
         GameManager.player.GetComponent<Player>().currentequipSize--;
+        if(GameManager.player.GetComponent<Player>().currentequipSize < 0)
+        {
+            GameManager.player.GetComponent<Player>().currentequipSize = 0;
+        }
     }
 }

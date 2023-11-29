@@ -25,7 +25,6 @@ public class Projectile : SpellObj
         // Set Projectile spell transforms
         transform.position = player.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        //        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.eulerAngles = new Vector3(0, 0, 0);
         transform.Rotate(Vector3.forward, angle);
         transform.Rotate(Vector3.left, 60);

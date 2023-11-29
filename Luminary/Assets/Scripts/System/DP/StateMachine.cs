@@ -39,6 +39,7 @@ public class StateMachine
                 // past state add to stack, new state regist on currentstate
                 else if (currentState.GetType().Name != newState.GetType().Name)
                 {
+                    Debug.Log(newState.GetType().Name);
                     // Save Previous State
                     stateStack.Push(currentState);
 

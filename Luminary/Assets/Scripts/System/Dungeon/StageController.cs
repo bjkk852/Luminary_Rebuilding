@@ -12,6 +12,7 @@ public class StageController
 
 
     public List<DunRoom> rooms;
+    public List<GameObject> corridors;
     public List<GameObject> gates;
     public bool[] isClear;
     public bool[] isVIsit;
@@ -26,7 +27,20 @@ public class StageController
     // When Game Starts Create Stage 1 Dungeon
     public void init()
     {
-
+        if(rooms != null)
+            if(rooms.Count >= 0)
+            {
+                rooms.Clear();
+            }
+        if(gates != null)
+            if(gates.Count >= 0)
+            {
+                gates.Clear();
+            }
+        rooms = new List<DunRoom>();
+        gates = new List<GameObject>();
+        isClear = new bool[0];
+        isVIsit = new bool[0];
     }
 
     public void tutorial()
@@ -74,7 +88,7 @@ public class StageController
         roomNoM += stageNo * 2;
         int roomN = GameManager.Random.getMapNext(roomNom, roomNoM);
 
-        rooms = GameManager.MapGen.DungeonGen(roomN);
+        (rooms, corridors) = GameManager.MapGen.DungeonGen(roomN);
 
         if (GameObject.Find("PlayerbleChara"))
         {
@@ -126,6 +140,17 @@ public class StageController
                 go.gameObject.SetActive(true);
             }
             else if(go.roomID == currentRoom)
+            {
+                go.gameObject.SetActive(true);
+            }
+            else
+            {
+                go.gameObject.SetActive(false);
+            }
+        }
+        foreach(GameObject go in corridors)
+        {
+            if (rooms[currentRoom].ConnectCorridor.Find(Item => Item.GetHashCode() == go.GetHashCode()))
             {
                 go.gameObject.SetActive(true);
             }

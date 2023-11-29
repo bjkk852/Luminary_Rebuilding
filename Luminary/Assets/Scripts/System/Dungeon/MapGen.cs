@@ -26,6 +26,7 @@ public class MapGen
     private Dictionary<Vector2, KeyValuePair<DunRoom, PointPosition>> ablepos;
 
     public List<DunRoom> Rooms = new List<DunRoom>();
+    public List<GameObject> Corridor = new List<GameObject>();
     public GameObject Doors;
 
     public void init()
@@ -36,6 +37,7 @@ public class MapGen
 
         // room list clear
         Rooms = new List<DunRoom>();
+        Corridor = new List<GameObject>();
 
         // if dungeon name object already exists, destroy it
         if (GameObject.Find("dungeon"))
@@ -79,7 +81,7 @@ public class MapGen
     }
 
     // start game, generate Dungeon
-    public List<DunRoom> DungeonGen(int roomN)
+    public (List<DunRoom>, List<GameObject>) DungeonGen(int roomN)
     {
         init();
 
@@ -137,7 +139,7 @@ public class MapGen
         // Player Object Gen
         GameManager.Instance.playerGen();
 
-        return Rooms;
+        return (Rooms, Corridor);
     }
 
     public DunRoom StartRoomGen()
@@ -145,7 +147,7 @@ public class MapGen
         // Start Room Generate and set position (0,0)
         DunRoom room = GameManager.Resource.Instantiate("Dungeon/Room/StartRoom", roomObj.transform).GetComponent<DunRoom>();
         room.gameObject.transform.SetParent(room.transform);
-        room.transform.position = new Vector3(0, 0, 2);
+        room.transform.position = new Vector3(0, 0, 0);
         room.roomID = 0;
         room.x = 0;
         room.y = 0;
@@ -167,8 +169,27 @@ public class MapGen
     */
     public DunRoom DungeonRoomGen()
     {
+        // Select Room Size
+        int size = GameManager.Random.getMapNext(1, 5);
+        int type = 0;
+        switch (size)
+        {
+            case 1:
+                type = GameManager.Random.getMapNext(0, 14);
+                break;
+            case 2:
+                type = GameManager.Random.getMapNext(0, 3);
+                break;
+            case 3:
+                type = GameManager.Random.getMapNext(0, 2);
+                break;
+            case 4:
+                type = GameManager.Random.getMapNext(0, 2);
+                break;
+
+        }
         // Generate Room Prefab
-        DunRoom room = GameManager.Resource.Instantiate("Dungeon/Room/Room1", roomObj.transform).GetComponent<DunRoom>();
+        DunRoom room = GameManager.Resource.Instantiate("Dungeon/Room/Room"+ size.ToString() + " " + type.ToString(), roomObj.transform).GetComponent<DunRoom>();
         room.gameObject.transform.SetParent(room.transform);
         Vector2 pos = new Vector2();
 
@@ -216,7 +237,7 @@ public class MapGen
         }
         // set room transform, and data
         // change connnect corridor tiles door tiles
-        room.transform.position = new Vector3(room.x * 2.56f, room.y * 2.56f, 2);
+        room.transform.position = new Vector3(room.x * 2.56f, room.y * 2.56f, 0);
         SetTilePos(room);
         SetDoorTile(targetRoom.Key, room, pos, po);
         SetPosData(room, po);
@@ -287,7 +308,7 @@ public class MapGen
         }
 
         // Set Corridor Tiles
-        SetCorridor(new Vector2(target.x, target.y), new Vector2(troomTile.x, troomTile.y), po);
+        SetCorridor(new Vector2(target.x, target.y), new Vector2(troomTile.x, troomTile.y), po, sroom, troom);
 
 
     }
@@ -399,7 +420,7 @@ public class MapGen
         return false;
     }
     // connect Doors
-    public void SetCorridor(Vector2 startPos, Vector2 targetPos, PointPosition dir)
+    public void SetCorridor(Vector2 startPos, Vector2 targetPos, PointPosition dir, DunRoom sroom, DunRoom troom)
     {
         List<KeyValuePair<Vector2, int>> corridor = new List<KeyValuePair<Vector2, int>>();
         Vector2 pos = new Vector2();
@@ -610,6 +631,8 @@ public class MapGen
         GameObject go = new GameObject();
         go.name = "corridor";
         go.transform.SetParent(corridorObj.transform);
+        sroom.ConnectCorridor.Add(go);
+        troom.ConnectCorridor.Add(go);
         GameObject obj;
         foreach (KeyValuePair<Vector2, int> tile in corridor)
         {
@@ -618,42 +641,42 @@ public class MapGen
                 case 1:
                     obj = GameManager.Resource.Instantiate("Dungeon/Corridor/Corridor_Column", dungeon.transform);
                     obj.transform.SetParent(go.transform);
-                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 2);
+                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 0);
                     obj.GetComponent<Tile>().x = (int)Math.Round(tile.Key.x);
                     obj.GetComponent<Tile>().y = (int)Math.Round(tile.Key.y);
                     break;
                 case 2:
                     obj = GameManager.Resource.Instantiate("Dungeon/Corridor/Corridor_LeftDown", dungeon.transform);
                     obj.transform.SetParent(go.transform);
-                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 2);
+                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 0);
                     obj.GetComponent<Tile>().x = (int)Math.Round(tile.Key.x);
                     obj.GetComponent<Tile>().y = (int)Math.Round(tile.Key.y);
                     break;
                 case 3:
                     obj = GameManager.Resource.Instantiate("Dungeon/Corridor/Corridor_LeftUp", dungeon.transform);
                     obj.transform.SetParent(go.transform);
-                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 2);
+                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 0);
                     obj.GetComponent<Tile>().x = (int)Math.Round(tile.Key.x);
                     obj.GetComponent<Tile>().y = (int)Math.Round(tile.Key.y);
                     break;
                 case 4:
                     obj = GameManager.Resource.Instantiate("Dungeon/Corridor/Corridor_RightDown", dungeon.transform);
                     obj.transform.SetParent(go.transform);
-                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 2);
+                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 0);
                     obj.GetComponent<Tile>().x = (int)Math.Round(tile.Key.x);
                     obj.GetComponent<Tile>().y = (int)Math.Round(tile.Key.y);
                     break;
                 case 5:
                     obj = GameManager.Resource.Instantiate("Dungeon/Corridor/Corridor_RightUp", dungeon.transform);
                     obj.transform.SetParent(go.transform);
-                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 2);
+                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 0);
                     obj.GetComponent<Tile>().x = (int)Math.Round(tile.Key.x);
                     obj.GetComponent<Tile>().y = (int)Math.Round(tile.Key.y);
                     break;
                 case 6:
                     obj = GameManager.Resource.Instantiate("Dungeon/Corridor/Corridor_Vertical", dungeon.transform);
                     obj.transform.SetParent(go.transform);
-                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 2);
+                    obj.transform.position = new Vector3(tile.Key.x * 2.56f, tile.Key.y * 2.56f, 0);
                     obj.GetComponent<Tile>().x = (int)Math.Round(tile.Key.x);
                     obj.GetComponent<Tile>().y = (int)Math.Round(tile.Key.y);
                     break;
@@ -668,6 +691,7 @@ public class MapGen
             disablePos.Add(pos);
 
         }
+        Corridor.Add(go);
     }
 
     // When New Dungeon Create or Next Dungeon Create buffer Clear

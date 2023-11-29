@@ -11,16 +11,16 @@ public class GoblinArrow : MobProjectile
         base.setData(mob);
         if(shooter.sawDir.x < 0)
         {
-            transform.position += new Vector3(-0.1f, 0.75f, 0);
+            transform.position += new Vector3(-0.1f, 0.75f, -1.3f);
         }
         else
         {
-            transform.position += new Vector3(0.1f, 0.75f, 0);
+            transform.position += new Vector3(0.1f, 0.75f, -1.3f);
         }
     }
     public override void Activate()
     {
+        dir = new Vector3(player.transform.position.x - shooter.transform.position.x, player.transform.position.y - shooter.transform.position.y, 0);
         base.Activate();
-        dir = new Vector3(player.transform.position.x - shooter.transform.position.x, 4, 0);
     }
 }

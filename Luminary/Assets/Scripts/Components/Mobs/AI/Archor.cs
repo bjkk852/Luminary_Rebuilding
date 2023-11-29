@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Archor : AIModel
 {
-    public override void FixedUpdate()
+    public override void Update()
     {
         // player exists
         if(GameManager.player != null)

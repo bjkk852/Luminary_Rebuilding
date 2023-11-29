@@ -67,7 +67,7 @@ public class BossUI : MonoBehaviorObj
         for(int i = 0; i < 100; i++)
         {
             HP.fillAmount += 0.01f;
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.002f);
 
         }
     }

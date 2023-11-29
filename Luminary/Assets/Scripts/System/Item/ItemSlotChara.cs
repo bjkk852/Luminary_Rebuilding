@@ -22,6 +22,10 @@ public class ItemSlotChara
     {
         this.item = null;
         GameManager.player.GetComponent<Charactor>().currentInvenSize--;
+        if(GameManager.player.GetComponent<Charactor>().currentInvenSize < 0)
+        {
+            GameManager.player.GetComponent<Charactor>().currentInvenSize = 0;
+        }
     }
 
     

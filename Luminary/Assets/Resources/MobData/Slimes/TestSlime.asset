@@ -19,8 +19,17 @@ MonoBehaviour:
   runRange: 0
   runDistance: 0
   detectDistance: 0
-  attackRange: []
-  castSpeed: []
-  castCool: []
+  attackRange:
+  - 0
+  - 0
+  - 0
+  castSpeed:
+  - 0
+  - 0
+  - 0
+  castCool:
+  - 0
+  - 0
+  - 0
   AI: SlimeBoss
   dropGold: 0

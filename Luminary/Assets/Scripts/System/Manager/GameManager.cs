@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
     // Game Object All Destroy
     public void GameObjectReSet()
     {
-        Resource.Destroy(GameObject.FindGameObjectsWithTag("Player"));
+        uiManager.UIClear();
     }
     // Initialize System Components
     public void init()
@@ -251,8 +251,9 @@ public class GameManager : MonoBehaviour
     // Lobby Scene Initialize
     public void lobbySceneInit()
     {
+        init();
         Camera mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        SpriteRenderer lobbyField = GameObject.Find("LobbyField").GetComponent<SpriteRenderer>();
+        SpriteRenderer lobbyField = GameObject.Find("BackGround").GetComponent<SpriteRenderer>();
         cameraManager.camera = mainCamera;
         cameraManager.background = lobbyField;
         playerGen();
@@ -261,6 +262,7 @@ public class GameManager : MonoBehaviour
 
         Item item = itemDataManager.ItemGen(10003001);
         player.GetComponent<Player>().Equip(0, item);
+        Resource.Instantiate("Mobs/Slime/SlimeBoss", new Vector3(4f, 4f, 0f));
     }
 
     // Stage Scene Initialize
@@ -362,7 +364,7 @@ public class GameManager : MonoBehaviour
     public void playerGen()
     {
         player = Resource.Instantiate("PlayerbleChara");
-        player.transform.position = new Vector3(0, 0, 1);
+        player.transform.position = new Vector3(0, 0, 0);
         player.name = "PlayerbleChara";
         cameraManager.setCamera(player.transform);
         PlayerDataManager.interactionDistance = 1000.0f;
@@ -408,6 +410,13 @@ public class GameManager : MonoBehaviour
     public List<string> getTextData(int index)
     {
         return Script.getTxtData(index);
+    }
+
+    public void GameReset()
+    {
+        GameObjectReSet();
+        gameState = GameState.Loading;
+        sceneControl("LobbyScene");
     }
 
 }

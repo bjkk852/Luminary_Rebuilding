@@ -67,7 +67,7 @@ public class InputManager : MonoBehaviour
             case UIState.Setting:
 
                 break;
-            case UIState.CutScene: 
+            case UIState.CutScene:
                 
                 break;
             case UIState.Pause:
@@ -96,7 +96,4 @@ public class InputManager : MonoBehaviour
         KeyAction += GameManager.Instance.uiManager.InPlayInput;
         KeyAction += GameManager.player.GetComponent<Player>().spellKey;
     }
-
-
-
 }

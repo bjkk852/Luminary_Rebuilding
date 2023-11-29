@@ -111,7 +111,7 @@ public class Charactor : MonoBehaviorObj
     }
 
     // Update is called once per frame
-    public virtual void FixedUpdate()
+    public virtual void Update()
     {
         // turn around by saw Dir
         if(sawDir.x > 0)
@@ -554,5 +554,10 @@ public class Charactor : MonoBehaviorObj
     public void EffectGen(string effectPath)
     {
         GameManager.Resource.Instantiate(effectPath, transform);
+    }
+
+    public void TextDebug(string txt)
+    {
+        Debug.Log(txt); 
     }
 }

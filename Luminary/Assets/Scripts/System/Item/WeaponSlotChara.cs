@@ -25,5 +25,9 @@ public class WeaponSlotChara
         item.data.func.UnEquipEffect();
         this.item = null;
         GameManager.player.GetComponent<Player>().currentweaponSize--;
+        if(GameManager.player.GetComponent<Charactor>().currentweaponSize < 0)
+        {
+            GameManager.player.GetComponent<Charactor>().currentweaponSize = 0;
+        }
     }
 }

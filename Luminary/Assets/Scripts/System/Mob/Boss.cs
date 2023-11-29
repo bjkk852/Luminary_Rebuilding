@@ -13,7 +13,7 @@ public class Boss : Mob
         
         isboss = true;
         isSpawnAction = true;
-        UIGen();
+        Debug.Log(sMachine.getStateStr());
     }
 
     public void UIGen()
@@ -25,25 +25,23 @@ public class Boss : Mob
         ui.SetData();
     }
 
-    public override void FixedUpdate()
+    public override void Update()
     {
         if (isSpawnAction)
         {
             // Spawn Scene Play
             SpawnSceneStart();
-            base.FixedUpdate();
         }
         else
         {
-            base.FixedUpdate();
+            base.Update();
         }
     }
 
     public void SpawnSceneEnd()
     {
-        isSpawnAction = false;
-        GameManager.Instance.uiManager.ChangeState(UIState.InPlay);
-        GameManager.cameraManager.player = GameManager.player.transform;
+        UIGen();
+        StartCoroutine(spawnSceneEndTrigger());
     }
 
     public void SpawnSceneStart()
@@ -58,4 +56,15 @@ public class Boss : Mob
         base.DieObject();
 
     }
+
+    public IEnumerator spawnSceneEndTrigger()
+    {
+        yield return new WaitForSeconds(3f);
+        changeState(new MobIdleState());
+        GameManager.Instance.uiManager.ChangeState(UIState.InPlay);
+        GameManager.cameraManager.player = GameManager.player.transform;
+        Debug.Log("End");
+        isSpawnAction = false;
+    }
+
 }

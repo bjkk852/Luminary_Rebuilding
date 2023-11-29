@@ -165,35 +165,38 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isInit)
+        if(GameManager.gameState != GameState.Loading)
         {
-            if(GameManager.Instance.uiManager != null)
+            if (!isInit)
             {
-                init();
+                if (GameManager.Instance.uiManager != null)
+                {
+                    init();
+                }
             }
-        }
-    // Draw TEXT UI
-        if(textUIqueue.Count > 0)
-        {
-            if(Time.time - textUItime > 2.5f)
+            // Draw TEXT UI
+            if (textUIqueue.Count > 0)
             {
-                textUItime = Time.time;
-                GenTextUI();
+                if (Time.time - textUItime > 2.5f)
+                {
+                    textUItime = Time.time;
+                    GenTextUI();
+                }
             }
-        }
 
-        if(invUI == null)
-        {
-            
-            invUI = canvas.transform.Find("Inventory2(Clone)").gameObject;
-        }
-        if(GameManager.uiState == UIState.InPlay)
-        {
-            stableUI.SetActive(true);
-        }
-        else
-        {
-            stableUI.SetActive(false);
+            if (invUI == null)
+            {
+
+                invUI = canvas.transform.Find("Inventory2(Clone)").gameObject;
+            }
+            if (GameManager.uiState == UIState.InPlay)
+            {
+                stableUI.SetActive(true);
+            }
+            else
+            {
+                stableUI.SetActive(false);
+            }
         }
     }
     // Change UI State

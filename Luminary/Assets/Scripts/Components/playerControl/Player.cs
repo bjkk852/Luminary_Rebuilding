@@ -60,7 +60,7 @@ public class Player : Charactor
         base.DieObject();
     }
 
-    public override void FixedUpdate()
+    public override void Update()
     {
         charactorSpeed = Vector2.zero;
         ManaGen();
@@ -86,7 +86,7 @@ public class Player : Charactor
             ismove = true;
             changeState(new PlayerMoveState());
         }
-        base.FixedUpdate();
+        base.Update();
 
     }
 
@@ -165,13 +165,13 @@ public class Player : Charactor
                 {
                     Debug.Log("SpellSlot Change 2");
                     currentSpell = skillslots[2];
-                    GameManager.Instance.uiManager.stableUI.GetComponent<StableUI>().WeaponSlotChange(1);
+                    GameManager.Instance.uiManager.stableUI.GetComponent<StableUI>().WeaponSlotChange(0);
                 }
                 else
                 {
                     Debug.Log("SpellSlot Change 1");
                     currentSpell = skillslots[1];
-                    GameManager.Instance.uiManager.stableUI.GetComponent<StableUI>().WeaponSlotChange(0);
+                    GameManager.Instance.uiManager.stableUI.GetComponent<StableUI>().WeaponSlotChange(1);
                 }
             }
         }

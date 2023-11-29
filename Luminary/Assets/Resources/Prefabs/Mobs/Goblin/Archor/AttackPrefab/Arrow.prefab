@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: d8d1211f9f8d10a42a52793cf3f03d79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,8 +103,10 @@ MonoBehaviour:
   shooter: {fileID: 0}
   instance: {fileID: 0}
   dir: {x: 0, y: 0, z: 0}
-  isGravity: 1
+  isGravity: 0
   isThrow: 0
+  trajectory: 0
+  timeOfFlight: 0.5
   player: {fileID: 0}
 --- !u!50 &-6693381337486602138
 Rigidbody2D:

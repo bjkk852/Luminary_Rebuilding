@@ -61,7 +61,6 @@ public class PauseMenu : Menu
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("TEST");
             GameManager.Instance.pauseGame();
             GameManager.Instance.uiManager.endMenu();
         }

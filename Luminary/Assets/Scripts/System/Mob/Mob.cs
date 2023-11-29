@@ -63,10 +63,9 @@ public class Mob : Charactor
     }
 
 
-    public override void FixedUpdate()
+    public override void Update()
     {
         
-        base.FixedUpdate();
         // if Player didn't find, research player object
         if(player == null)
         {
@@ -84,9 +83,10 @@ public class Mob : Charactor
         }
 
         // AI model update
-        model.FixedUpdate();
+        model.Update();
 
 
+        base.Update();
     }
 
     public override void DieObject()
@@ -140,6 +140,7 @@ public class Mob : Charactor
     // Attack Object Generate
     public void AttackObjGen(int index)
     {
+        // if HitBox Attack
         if (isHitbox[index])
         {
             GameObject go = GameManager.Resource.Instantiate(attackPrefab[index], transform);
@@ -152,30 +153,41 @@ public class Mob : Charactor
             ActiveAtk = go.GetComponent<MobAttack>();
             try
             {
+                // if ProjecTile Attack
                 ActiveAtk.GetComponent<MobProjectile>().setData(this);
+                Debug.Log("Projectile");
             }
             catch
             {
-                bool isrnd = ActiveAtk.GetComponent<MobField>().isRandom;
-                if (isrnd)
+                // if Field Attack
+                try
                 {
-                    Vector3 pos = new Vector3();
-                    ActiveAtk.GetComponent<MobField>().setData(this, pos);
+                    bool isrnd = ActiveAtk.GetComponent<MobField>().isRandom;
+                    if (isrnd)
+                    {
+                        Vector3 pos = new Vector3();
+                        ActiveAtk.GetComponent<MobField>().setData(this, pos);
+                    }
+                    else
+                    {
+                        ActiveAtk.GetComponent<MobField>().setData(this);
+                    }
+                    Debug.Log("Field");
                 }
-                else
+                catch 
                 {
-                    ActiveAtk.GetComponent<MobField>().setData(this);
+                    // if Control Object Attack
+                    go.GetComponent<Patturn>().setData(this);
+                    go.transform.position = new Vector3(transform.position.x, transform.position.z, 1);
                 }
             }
         }
-        Debug.Log(AtkObj);
-        AtkObj.Add(ActiveAtk);
+        if(ActiveAtk != null)
+            AtkObj.Add(ActiveAtk);
     }
 
     public void AttackActivates()
     {
-
-        Debug.Log(AtkObj);
         try
         {
             ActiveAtk.Activate();
@@ -200,8 +212,6 @@ public class Mob : Charactor
             endCurrentState();
 
         }
-
-        Debug.Log(AtkObj);
     }
 
     public float HPPercent()

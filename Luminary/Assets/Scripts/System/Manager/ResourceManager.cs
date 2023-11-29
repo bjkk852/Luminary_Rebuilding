@@ -26,7 +26,6 @@ public class ResourceManager
     public GameObject Instantiate(string path, Vector3 pos = default, Transform parent = null)
     {
         GameObject prefab = Load<GameObject>($"Prefabs/{path}");
-        prefab.transform.position = pos;
         if (prefab == null)
         {
             Debug.Log($"Failed to load prefab : {path}");
@@ -34,6 +33,7 @@ public class ResourceManager
         }
         else
         {
+            prefab.transform.position = pos;
             try
             {
                 if(prefab.GetComponent<MonoBehaviorObj>().type == MonoBehaviorObj.types.Object)
@@ -130,7 +130,6 @@ public class ResourceManager
             return null;
         }
         GameObject prefab = Object.Instantiate(obj, parent);
-        prefab.transform.position = pos;
         if (prefab == null)
         {
             Debug.Log($"Failed to laod prefab : {obj.name}");
@@ -138,6 +137,7 @@ public class ResourceManager
         }
         else
         {
+            prefab.transform.position = pos;
             try
             {
                 if (prefab.GetComponent<MonoBehaviorObj>().type == MonoBehaviorObj.types.Object)
