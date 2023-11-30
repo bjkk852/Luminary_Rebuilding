@@ -36,7 +36,7 @@ public class Rain : MobAttack
         }
         if(isActivate)
         {
-
+            transform.position += (shooter.transform.position - transform.position) * Time.deltaTime * 2f;
         }
     }
 }

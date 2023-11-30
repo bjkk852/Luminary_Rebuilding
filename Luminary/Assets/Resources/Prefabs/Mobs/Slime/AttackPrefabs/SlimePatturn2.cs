@@ -35,7 +35,7 @@ public class SlimePatturn2 : Patturn
     {
         jellys = new List<GameObject>();
         shadows = new List<GameObject>();
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 2; i++)
         {
             for(int j = 0; j < 7; j++)
             {
@@ -66,8 +66,25 @@ public class SlimePatturn2 : Patturn
         }
         shadows.Clear();
 
-        yield return new WaitForSeconds(1f);
+        foreach(GameObject go in jellys)
+        {
+            go.GetComponent<Rain>().isActivate = true;
+        }
 
+        yield return new WaitForSeconds(1f); 
+        foreach (GameObject go in jellys)
+        {
+            GameManager.Resource.Destroy(go);
+        }
+        mob.AnimationPlay("MergeFirst");
+
+        yield return new WaitForSeconds(3f);
+        mob.AnimationPlay("MergeFinal");
+
+        yield return new WaitForSeconds(1f);
+        mob.lastAttackT[1] = Time.time;
+        mob.changeState(new MobIdleState());
+        GameManager.Resource.Destroy(gameObject);
     }
 
     public bool isNear(float x, float y)
