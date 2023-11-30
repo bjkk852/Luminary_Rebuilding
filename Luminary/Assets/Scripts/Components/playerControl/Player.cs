@@ -17,7 +17,8 @@ public class Player : Charactor
 
     public bool isInit = false;
     public bool ismove = false;
-
+    [SerializeField]
+    public Transform staffPos;
 
     public override void Awake()
     {

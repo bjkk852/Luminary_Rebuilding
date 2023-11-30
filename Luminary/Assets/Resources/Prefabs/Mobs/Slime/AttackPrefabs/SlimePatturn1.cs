@@ -26,7 +26,7 @@ public class SlimePatturn1 : Patturn
         }
         else
         {
-//            GameManager.Resource.Destroy(gameObject);
+            GameManager.Resource.Destroy(gameObject);
         }
     }
 

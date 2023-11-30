@@ -20,6 +20,8 @@ public class Mob : Charactor
 
     public Vector2 sawDirect;
 
+    public bool isCollider;
+
     // Start is called before the first frame update
     public override void Awake()
     {
@@ -36,6 +38,7 @@ public class Mob : Charactor
         {
             sMachine.changeState(new MobIdleState());
         }
+        isCollider = true;
         AIGen();
         
     }
@@ -115,10 +118,14 @@ public class Mob : Charactor
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.transform.tag == "Player")
+        if (isCollider)
         {
+            if (other.transform.tag == "Player")
+            {
 
-            other.gameObject.GetComponent<Charactor>().HPDecrease(1);
+                other.gameObject.GetComponent<Charactor>().HPDecrease(1);
+            }
+
         }
     }
 
@@ -241,5 +248,27 @@ public class Mob : Charactor
     {
         GetComponent<Rigidbody2D>().simulated = false;
         GetComponent<CircleCollider2D>().isTrigger = true;
+    }
+
+    public void ColliderOn()
+    {
+        GetComponent<Rigidbody2D>().simulated = true;
+    }
+    
+    public void ColliderOff()
+    {
+        GetComponent<Rigidbody2D>().simulated = false;
+    }
+
+    public void ColliderMove(float y)
+    {
+        GetComponent<CapsuleCollider2D>().offset += new Vector2(0, y);
+    }
+
+    public void StateNull()
+    {
+        setIdleState();
+        sMachine.changeState(null);
+        Debug.Log("null");
     }
 }

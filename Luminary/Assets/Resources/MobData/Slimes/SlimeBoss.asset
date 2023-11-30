@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ea23a18de1ae614a9d8cb715df8fe31, type: 3}
-  m_Name: TestSlime
+  m_Name: SlimeBoss
   m_EditorClassIdentifier: 
   index: 0
   baseHP: 1000
@@ -21,15 +21,18 @@ MonoBehaviour:
   detectDistance: 0
   attackRange:
   - 0
+  - 13
   - 0
   - 0
   castSpeed:
   - 0
-  - 0
-  - 0
+  - 0.5
+  - 0.2
+  - 0.5
   castCool:
   - 0
   - 0
+  - 7
   - 0
   AI: SlimeBoss
-  dropGold: 0
+  dropGold: 3000

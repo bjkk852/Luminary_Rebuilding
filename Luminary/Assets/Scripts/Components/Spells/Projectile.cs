@@ -23,7 +23,7 @@ public class Projectile : SpellObj
         dir.z = 0;
         dir.Normalize();
         // Set Projectile spell transforms
-        transform.position = player.transform.position;
+        transform.position = player.GetComponent<Player>().staffPos.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(0, 0, 0);
         transform.Rotate(Vector3.forward, angle);

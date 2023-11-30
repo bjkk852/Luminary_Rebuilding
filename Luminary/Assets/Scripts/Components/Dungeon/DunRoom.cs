@@ -28,6 +28,7 @@ public class DunRoom : MonoBehaviour
 
     public List<Transform> spawnTrans;
 
+
     // Start Room
     public void ActivateRoom()
     {
@@ -112,5 +113,16 @@ public class DunRoom : MonoBehaviour
         {
             GameManager.StageC.moveRoom(roomID);
         }
+    }
+
+    public (Vector3, Vector3) roomRange()
+    {
+        int left = x - centerX;
+        int down = y - centerY;
+
+        int right = x + sizeX - centerX -1;
+        int top = y + sizeY - centerY -1;
+
+        return (new Vector3(left * 2.56f,down * 2.56f),  new Vector3(right * 2.56f,top * 2.56f));
     }
 }

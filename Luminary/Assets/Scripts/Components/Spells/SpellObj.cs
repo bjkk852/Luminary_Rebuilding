@@ -33,8 +33,9 @@ public class SpellObj : MonoBehaviorObj
         data = dts;
         spawnTime = Time.time;
         currentTime = spawnTime;
-        spawnPos = player.transform.position;
+        spawnPos = player.GetComponent<Player>().staffPos.position;
         transform.position = spawnPos;
+        spawnPos = transform.position;
         // if Spells field tyles set position eliipse inside
         if(data.type == 2)
         {

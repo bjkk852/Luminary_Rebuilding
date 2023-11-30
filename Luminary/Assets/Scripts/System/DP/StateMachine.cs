@@ -18,8 +18,12 @@ public class StateMachine
     // change charator state
     public void changeState(State newState)
     {
+        if(newState == null)
+        {
+            currentState = null;
+        }
         // check this first regist state
-        if (currentState != null) {
+        else if (currentState != null) {
             // if stun state setting idle state
             if(newState.GetType().Name == "PlayerStunState" || newState.GetType().Name == "MobStunState")
             {
@@ -39,7 +43,6 @@ public class StateMachine
                 // past state add to stack, new state regist on currentstate
                 else if (currentState.GetType().Name != newState.GetType().Name)
                 {
-                    Debug.Log(newState.GetType().Name);
                     // Save Previous State
                     stateStack.Push(currentState);
 

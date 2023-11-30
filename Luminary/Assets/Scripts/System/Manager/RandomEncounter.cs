@@ -66,13 +66,20 @@ public class RandomEncounter
     // return shopSeed's Next
     public int getShopNext(int m = 0, int M = 100)
     {
-        return mapSeed.Next(m, M);
+        return shopSeed.Next(m, M);
 
     }
     // return generalSeed's Next
     public int getGeneralNext(int m = 0, int M = 100)
     {
-        return mapSeed.Next(m, M);
+        return generalSeed.Next(m, M);
 
     }
+
+    public Double getGeneralNext(float m = 0, float M = 100)
+    {
+        return UnityEngine.Random.Range(m, M);
+        
+    }
+
 }

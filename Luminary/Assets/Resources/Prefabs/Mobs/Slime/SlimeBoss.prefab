@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5178427110661861826}
   - component: {fileID: -2379064674690440154}
   - component: {fileID: 4242228221639388190}
-  - component: {fileID: 4828434631867619184}
   - component: {fileID: 2375397327634877226}
   - component: {fileID: 3946516618487770308}
+  - component: {fileID: 7157588726762260640}
   m_Layer: 0
   m_Name: SlimeBoss
   m_TagString: Mob
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828922195368599024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 7, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -115,27 +115,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &4828434631867619184
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828922195368599024}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a6c5b88c771bd3d45970d8b665869a90, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2375397327634877226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +138,7 @@ MonoBehaviour:
   currentweaponSize: 0
   godmode: 0
   charactorSpeed: {x: 0, y: 0}
-  animator: {fileID: 4828434631867619184}
+  animator: {fileID: 7157588726762260640}
   currentAnimation: 
   sawDir: {x: 0, y: 0}
   attackPrefab:
@@ -174,6 +153,7 @@ MonoBehaviour:
   - {fileID: 0}
   ActiveAtk: {fileID: 0}
   sawDirect: {x: 0, y: 0}
+  isCollider: 0
   isSpawnAction: 1
 --- !u!70 &3946516618487770308
 CapsuleCollider2D:
@@ -207,6 +187,27 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.2500014}
+  m_Offset: {x: 0, y: 2.25}
   m_Size: {x: 3.7, y: 4}
   m_Direction: 0
+--- !u!95 &7157588726762260640
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828922195368599024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a6c5b88c771bd3d45970d8b665869a90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
